@@ -1,6 +1,6 @@
 export default function() {
   const store = {};
-
+  let count = 0;
   function get(key) {
     const hashValue = hash(key);
     if (store[hashValue]) {
@@ -18,14 +18,13 @@ export default function() {
       store[hashValue][key] = value;
     } else {
       store[hashValue] = pair;
+      count += 1;
     }
   }
 
-  function size(){
-    let count = 0;
-    Object.keys(store).forEach(hashValue => count += Object.keys(store[hashValue]).length);
-    return count;
-  }
+    function size(){
+        return count;
+    }
   return { get, set, size };
 }
 
