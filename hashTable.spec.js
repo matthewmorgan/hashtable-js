@@ -51,4 +51,12 @@ describe('HashTable', ()=> {
     expect(hashTable.size()).toEqual(2);
   });
 
+  it('can remove an element by key', ()=> {
+    hashTable.set('monkey', 'banana');
+    expect(hashTable.size()).toEqual(1);
+    hashTable.remove('monkey');
+    expect(hashTable.get('monkey')).toEqual(undefined);
+    expect(hashTable.size()).toEqual(0);
+  });
+
 });

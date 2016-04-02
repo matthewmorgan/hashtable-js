@@ -19,7 +19,15 @@ export default function () {
       store[hashValue][key] = value;
     } else {
       store[hashValue] = pair;
-      count += 1;
+      count++;
+    }
+  }
+
+  function remove(key) {
+    const hashValue = hash(key);
+    if (store[hashValue][key]) {
+      delete store[hashValue][key];
+      count--;
     }
   }
 
@@ -27,7 +35,7 @@ export default function () {
     return count;
   }
 
-  return { get, set, size };
+  return {get, set, remove, size};
 }
 
 function hash(key) {
