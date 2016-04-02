@@ -1,6 +1,7 @@
-export default function() {
+export default function () {
   const store = {};
   let count = 0;
+
   function get(key) {
     const hashValue = hash(key);
     if (store[hashValue]) {
@@ -14,7 +15,7 @@ export default function() {
     const hashValue = hash(key);
     var pair = {};
     pair[key] = value;
-    if (store[hashValue]){
+    if (store[hashValue]) {
       store[hashValue][key] = value;
     } else {
       store[hashValue] = pair;
@@ -22,9 +23,10 @@ export default function() {
     }
   }
 
-    function size(){
-        return count;
-    }
+  function size() {
+    return count;
+  }
+
   return { get, set, size };
 }
 
@@ -76,9 +78,12 @@ function murmurhash3_32_gc(key, seed) {
   k1 = 0;
 
   switch (remainder) {
-    case 3: k1 ^= (key.charCodeAt(i + 2) & 0xff) << 16;
-    case 2: k1 ^= (key.charCodeAt(i + 1) & 0xff) << 8;
-    case 1: k1 ^= (key.charCodeAt(i) & 0xff);
+    case 3:
+      k1 ^= (key.charCodeAt(i + 2) & 0xff) << 16;
+    case 2:
+      k1 ^= (key.charCodeAt(i + 1) & 0xff) << 8;
+    case 1:
+      k1 ^= (key.charCodeAt(i) & 0xff);
 
       k1 = (((k1 & 0xffff) * c1) + ((((k1 >>> 16) * c1) & 0xffff) << 16)) & 0xffffffff;
       k1 = (k1 << 15) | (k1 >>> 17);
